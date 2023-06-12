@@ -16,7 +16,7 @@ if gita_type == "Chapter Summary":
         
         chapter_data = get_chapter_summary_data(chapter_number=chapter_number)
         st.markdown("""<h3 style="color: yellow;">Chapter Name: {} ({})</h3>""".format(chapter_data["name"], chapter_data["name_meaning"]), unsafe_allow_html=True)
-        st.markdown("""<h3 style="color: yellow;">Verse Number: {}</h3>""".format(chapter_data["verses_count"]), unsafe_allow_html=True)
+        st.markdown("""<h3 style="color: yellow;">Chapter Number: {}</h3>""".format(chapter_number), unsafe_allow_html=True)
         st.markdown("""<h3 style="color: brown;">Chapter Summary</h3>""", unsafe_allow_html=True)
         st.markdown(chapter_data["chapter_summary_hindi"])
         st.markdown("""<h6 style="color: brown;">Chapter Summary (English)</h6>""", unsafe_allow_html=True)
