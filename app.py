@@ -12,7 +12,7 @@ if gita_type == "Chapter Summary":
     
     if st.sidebar.button("Get Summary"):
 
-        st.image(get_chapter_image(chapter_number), width=600)
+        st.image("data/gita/chapters_img/{}.jpg".format(chapter_number), width=600)
         
         chapter_data = get_chapter_summary_data(chapter_number=chapter_number)
         st.markdown("""<h3 style="color: yellow;">Chapter Name: {} ({})</h3>""".format(chapter_data["name"], chapter_data["name_meaning"]), unsafe_allow_html=True)
@@ -29,7 +29,7 @@ if gita_type == "Verse Explanation":
     
     if st.sidebar.button("Get Verse"):
 
-        st.image(get_chapter_image(chapter_number), width=600)
+        st.image("data/gita/chapters_img/{}.jpg".format(chapter_number), width=600)
 
         chapter_name = get_chapter_name(chapter_number)
         verse_data = get_verse_data(chapter_number, verse_number)
