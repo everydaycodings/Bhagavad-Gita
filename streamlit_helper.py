@@ -29,11 +29,35 @@ def get_verse_numbers(chapter_number):
         return verse_numbers
 
 
-def get_english_meaning(verse_text):
+def extract_english_meaning(verse_text):
     verse_text = str(verse_text).replace("\n", " ")
     verse_text = "{};".format(verse_text)
     extracted_text = "\n".join(re.findall("—(.*?);", verse_text))
     return extracted_text
+
+
+def get_translation(chapter_number, verse_number, lang, author):
+
+    verse_id = 0
+    if chapter_number != 1:
+        for i in range(1, chapter_number):
+            total_number_of_verse = get_verse_numbers(i)
+            verse_id += max(total_number_of_verse)
+
+        verse_id += verse_number
+    
+    else:
+        verse_id = verse_number
+
+    with open('data/gita/translation.json', 'r') as file:
+        data = json.load(file)
+
+        for verse in data:
+            if verse['verseNumber'] == verse_id:
+                if verse["lang"] == lang:
+                    if verse["authorName"] == author:
+                        return verse["description"]
+
 
 
 def get_chapter_summary_data(chapter_number):
