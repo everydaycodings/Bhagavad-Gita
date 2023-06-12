@@ -60,6 +60,15 @@ def get_translation(chapter_number, verse_number, lang, author):
 
 
 
+def get_chapter_image(chapter_number):
+    with open('data/gita/chapters.json', 'r') as file:
+        data = json.load(file)
+        for chapter in data:
+            if chapter['chapter_number'] == chapter_number:
+                return chapter["image_name"]
+    return None
+
+
 def get_chapter_summary_data(chapter_number):
     with open('data/gita/chapters.json', 'r') as file:
         data = json.load(file)

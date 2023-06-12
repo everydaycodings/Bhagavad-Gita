@@ -1,16 +1,19 @@
 import streamlit as st
-from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_translation, get_verse_commentary_data
+from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_translation, get_verse_commentary_data, get_chapter_image
 
 
-st.title("Bhagavad Gita")
+st.sidebar.title("Bhagavad Gita")
 
-gita_type = st.selectbox(label="Select the type: ", options=["Chapter Summary", "Verse Explanation"])
+gita_type = st.sidebar.selectbox(label="Select the type: ", options=["Chapter Summary", "Verse Explanation"])
 
 if gita_type == "Chapter Summary":
 
-    chapter_number = st.selectbox(label="Enter The Chapter Number: ", options=get_chapter_number())
+    chapter_number = st.sidebar.selectbox(label="Enter The Chapter Number: ", options=get_chapter_number())
     
-    if st.button("Get Summary"):
+    if st.sidebar.button("Get Summary"):
+
+        st.image("https://bhagavadgita.io/static/images/{}.jpg".format(get_chapter_image(chapter_number)), width=600)
+        
         chapter_data = get_chapter_summary_data(chapter_number=chapter_number)
         st.markdown("""<h3 style="color: yellow;">Chapter Name: {} ({})</h3>""".format(chapter_data["name"], chapter_data["name_meaning"]), unsafe_allow_html=True)
         st.markdown("""<h3 style="color: yellow;">Verse Number: {}</h3>""".format(chapter_data["verses_count"]), unsafe_allow_html=True)
@@ -21,10 +24,13 @@ if gita_type == "Chapter Summary":
 
 
 if gita_type == "Verse Explanation":
-    chapter_number = st.selectbox(label="Enter The Chapter Number: ", options=get_chapter_number())
-    verse_number = st.selectbox(label="Enter The Verse Number: ", options=get_verse_numbers(chapter_number))
+    chapter_number = st.sidebar.selectbox(label="Enter The Chapter Number: ", options=get_chapter_number())
+    verse_number = st.sidebar.selectbox(label="Enter The Verse Number: ", options=get_verse_numbers(chapter_number))
     
-    if st.button("Get Verse"):
+    if st.sidebar.button("Get Verse"):
+
+        st.image("https://bhagavadgita.io/static/images/{}.jpg".format(get_chapter_image(chapter_number)), width=600)
+
         chapter_name = get_chapter_name(chapter_number)
         verse_data = get_verse_data(chapter_number, verse_number)
         verse_commentary_data = get_verse_commentary_data(chapter_number, verse_number)
