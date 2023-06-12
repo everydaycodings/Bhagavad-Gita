@@ -65,7 +65,7 @@ def get_chapter_image(chapter_number):
         data = json.load(file)
         for chapter in data:
             if chapter['chapter_number'] == chapter_number:
-                return chapter["image_name"]
+                return "https://bhagavadgita.io/static/images/{}.jpg".format(chapter["image_name"])
     return None
 
 
