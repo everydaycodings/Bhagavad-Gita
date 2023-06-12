@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_english_meaning
+from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_english_meaning, get_verse_commentary_data
 
 
 st.title("Bhagavad Gita")
@@ -27,6 +27,7 @@ if gita_type == "Verse Explanation":
     if st.button("Get Verse"):
         chapter_name = get_chapter_name(chapter_number)
         verse_data = get_verse_data(chapter_number, verse_number)
+        verse_commentary_data = get_verse_commentary_data(chapter_number, verse_number)
         audio_file = open('data/gita/verse_recitation/{}/{}.mp3'.format(chapter_number, verse_number), 'rb').read()
 
         st.markdown("##### Chapter Name: {}".format(chapter_name))
@@ -35,9 +36,11 @@ if gita_type == "Verse Explanation":
         st.markdown(verse_data["text"])
         st.markdown("**Transliteration**")
         st.markdown(verse_data["transliteration"])
+        st.markdown("**Verse Audio**")
+        st.audio(audio_file, format='audio/mp3')
         st.markdown("**Word Meanings**")
         st.markdown(verse_data["word_meanings"])
         st.markdown("**English Translation**")
         st.markdown(get_english_meaning(verse_data["word_meanings"]))
-        st.markdown("**Verse Audio**")
-        st.audio(audio_file, format='audio/mp3')
+        st.markdown("**Commentary**")
+        st.markdown(verse_commentary_data["commentary"])

@@ -55,3 +55,14 @@ def get_verse_data(chapter_number,verse_number):
             if verse['verse_number'] == verse_number:
                 return verse
     return None
+
+
+def get_verse_commentary_data(chapter_number,verse_number):
+    with open('data/gita/commentary.json', 'r') as file:
+        data = json.load(file)
+        filtered_data = [d for d in data if d['chapter_id'] == chapter_number]
+
+        for verse in filtered_data:
+            if verse['verse_id'] == verse_number:
+                return verse
+    return None
