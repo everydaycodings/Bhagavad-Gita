@@ -65,13 +65,12 @@ if gita_type == "Gita Dhyanam":
     
     gita_dhyanam = get_gita_dhyanam()
     audio_file = open('data/gita/audio/Geeta-Dhyanam.m4a', 'rb').read()
+    
+    st.title("Gita Dhyanam")
+    st.image("data/gita/gita_dhyanam_img.jpeg", width=700)
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.subheader("Gita Dhyanam")
-    with col2:
-        st.audio(audio_file, format='audio/m4a' )
+    st.markdown("""<h5 style="color: brown;">Gita Dhyanam Audio</h5>""", unsafe_allow_html=True)
+    st.audio(audio_file, format='audio/m4a' )
     
     st.divider()
     for dhyanam in gita_dhyanam:
