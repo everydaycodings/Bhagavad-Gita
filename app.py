@@ -1,10 +1,10 @@
 import streamlit as st
-from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_translation, get_verse_commentary_data, get_chapter_image
+from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_translation, get_verse_commentary_data, get_gita_dhyanam, read_gita_dhyanam
 
 
 st.sidebar.title("Bhagavad Gita")
 
-gita_type = st.sidebar.selectbox(label="Select the type: ", options=["Chapter Summary", "Verse Explanation"])
+gita_type = st.sidebar.selectbox(label="Select the type: ", options=["Gita Dhyanam", "Verse Explanation", "Chapter Summary"])
 
 if gita_type == "Chapter Summary":
 
@@ -53,3 +53,28 @@ if gita_type == "Verse Explanation":
         st.markdown(get_translation(chapter_number, verse_number, "english", "Swami Gambirananda"))
         st.markdown("""<h3 style="color: brown;">Commentary</h3>""", unsafe_allow_html=True)
         st.markdown(verse_commentary_data["commentary"])
+
+
+
+if gita_type == "Gita Dhyanam":
+    
+    gita_dhyanam = get_gita_dhyanam()
+    audio_file = open('data/gita/audio/Geeta-Dhyanam.m4a', 'rb').read()
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Gita Dhyanam")
+    with col2:
+        st.audio(audio_file, format='audio/m4a' )
+    
+    st.divider()
+    for dhyanam in gita_dhyanam:
+        st.markdown("""<h3 style="color: brown;">{}</h3>""".format(dhyanam["verse_sanskrit"]), unsafe_allow_html=True)
+        st.markdown("""<h5 style="color: white;">{}</h5>""".format(dhyanam["verse_trans"]), unsafe_allow_html=True)
+        st.markdown("**{}**".format(dhyanam["verse_meaning"]))
+        st.divider()
+    
+
+    st.subheader("Description")
+    st.markdown("{}".format(read_gita_dhyanam()))

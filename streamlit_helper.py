@@ -99,3 +99,20 @@ def get_verse_commentary_data(chapter_number,verse_number):
             if verse['verse_id'] == verse_number:
                 return verse
     return None
+
+
+
+def get_gita_dhyanam():
+    with open('data/gita/gita_dhyanam.json', 'r') as file:
+        data = json.load(file)
+        return data
+    
+    return None
+
+def read_gita_dhyanam():
+    # Open the file in read mode
+    with open('data/gita/gita_dhyanam.txt', 'r') as file:
+        # Read the contents of the file
+        text = file.read()
+
+    return text
