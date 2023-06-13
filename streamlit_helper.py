@@ -116,3 +116,12 @@ def read_gita_dhyanam():
         text = file.read()
 
     return text
+
+
+def get_chapter_summary_commentry(chapter_number):
+    with open('data/gita/chapters_summary2.json', 'r') as file:
+        data = json.load(file)
+        for chapter in data:
+            if chapter['chapter_number'] == chapter_number:
+                return chapter["text"]
+    return None

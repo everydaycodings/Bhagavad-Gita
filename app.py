@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_translation, get_verse_commentary_data, get_gita_dhyanam, read_gita_dhyanam
+from streamlit_helper import get_chapter_summary_data, get_verse_numbers, get_chapter_number, get_verse_data, get_chapter_name, get_translation, get_verse_commentary_data, get_gita_dhyanam, read_gita_dhyanam, get_chapter_summary_commentry
 
 
 st.sidebar.title("Bhagavad Gita")
@@ -21,7 +21,8 @@ if gita_type == "Chapter Summary":
         st.markdown(chapter_data["chapter_summary_hindi"])
         st.markdown("""<h6 style="color: brown;">Chapter Summary (English)</h6>""", unsafe_allow_html=True)
         st.markdown(chapter_data["chapter_summary"])
-
+        st.markdown("""<h3 style="color: brown;">Bhagavad Gita Chapter {} Summary and Commentary by Swami Paramarthananda</h3>""".format(chapter_number), unsafe_allow_html=True)
+        st.markdown(get_chapter_summary_commentry(chapter_number), unsafe_allow_html=True)
 
 if gita_type == "Verse Explanation":
     chapter_number = st.sidebar.selectbox(label="Enter The Chapter Number: ", options=get_chapter_number())
@@ -77,4 +78,4 @@ if gita_type == "Gita Dhyanam":
     
 
     st.subheader("Description")
-    st.markdown("{}".format(read_gita_dhyanam()))
+    st.markdown("{}".format(read_gita_dhyanam())) 
