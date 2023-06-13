@@ -34,7 +34,7 @@ if gita_type == "Verse Explanation":
         chapter_name = get_chapter_name(chapter_number)
         verse_data = get_verse_data(chapter_number, verse_number)
         verse_commentary_data = get_verse_commentary_data(chapter_number, verse_number)
-        audio_file = open('data/gita/verse_recitation/{}/{}.mp3'.format(chapter_number, verse_number), 'rb').read()
+        audio_file = open('data/gita/audio/verse_recitation/{}/{}.mp3'.format(chapter_number, verse_number), 'rb').read()
 
         st.markdown("""<h3 style="color: yellow;">Chapter Name: {}</h3>""".format(chapter_name), unsafe_allow_html=True)
         st.markdown("""<h3 style="color: yellow;">Verse Number: {}</h3>""".format(verse_data["verse_number"]), unsafe_allow_html=True)
