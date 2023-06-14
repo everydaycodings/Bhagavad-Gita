@@ -40,12 +40,14 @@ Contributions to the Bhagavad Gita Web App are welcome! If you find any issues o
 License
 
 This project is licensed under the [MIT License](https://github.com/everydaycodings/Bhagavad-Gita/blob/master/LICENSE).
-Acknowledgements
+
+
+## Acknowledgements
 
 We would like to express our gratitude to the following resources that have been instrumental in creating this web app:
 
-    Bhagavad Gita
-    Gita Dhyanam
+1) [Gita Organization](https://github.com/gita/gita)
+2) [https://shlokam.org/](https://shlokam.org/bhagavad-gita)
 
 Contact
 
