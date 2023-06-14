@@ -81,4 +81,7 @@ if gita_type == "Gita Dhyanam":
     
 
     st.subheader("Description")
-    st.markdown("{}".format(read_gita_dhyanam())) 
+    st.markdown("{}".format(read_gita_dhyanam()))
+
+
+st.sidebar.markdown("""Source Code:  [Github LInk](https://github.com/everydaycodings/Bhagavad-Gita)""")
