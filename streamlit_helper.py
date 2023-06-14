@@ -1,6 +1,8 @@
 import json
 import re
+import streamlit as st
 
+@st.cache_data
 def get_chapter_name(chapter_number):
     with open('data/gita/chapters.json', 'r') as file:
         data = json.load(file)
@@ -10,6 +12,7 @@ def get_chapter_name(chapter_number):
     return None
 
 
+@st.cache_data
 def get_chapter_number():
 
     with open('data/gita/chapters.json', 'r') as file:
@@ -20,6 +23,7 @@ def get_chapter_number():
     return None
 
 
+@st.cache_data
 def get_verse_numbers(chapter_number):
     with open('data/gita/verse.json', 'r') as file:
         data = json.load(file)
@@ -29,6 +33,7 @@ def get_verse_numbers(chapter_number):
         return verse_numbers
 
 
+@st.cache_data
 def extract_english_meaning(verse_text):
     verse_text = str(verse_text).replace("\n", " ")
     verse_text = "{};".format(verse_text)
@@ -36,6 +41,7 @@ def extract_english_meaning(verse_text):
     return extracted_text
 
 
+@st.cache_data
 def get_translation(chapter_number, verse_number, lang, author):
 
     verse_id = 0
@@ -60,6 +66,7 @@ def get_translation(chapter_number, verse_number, lang, author):
 
 
 
+@st.cache_data
 def get_chapter_image(chapter_number):
     with open('data/gita/chapters.json', 'r') as file:
         data = json.load(file)
@@ -79,6 +86,7 @@ def get_chapter_summary_data(chapter_number):
 
 
 
+@st.cache_data
 def get_verse_data(chapter_number,verse_number):
     with open('data/gita/verse.json', 'r') as file:
         data = json.load(file)
@@ -90,6 +98,7 @@ def get_verse_data(chapter_number,verse_number):
     return None
 
 
+@st.cache_data
 def get_verse_commentary_data(chapter_number,verse_number):
     with open('data/gita/commentary.json', 'r') as file:
         data = json.load(file)
@@ -101,7 +110,7 @@ def get_verse_commentary_data(chapter_number,verse_number):
     return None
 
 
-
+@st.cache_data
 def get_gita_dhyanam():
     with open('data/gita/gita_dhyanam.json', 'r') as file:
         data = json.load(file)
@@ -109,6 +118,7 @@ def get_gita_dhyanam():
     
     return None
 
+@st.cache_data
 def read_gita_dhyanam():
     # Open the file in read mode
     with open('data/gita/gita_dhyanam.txt', 'r') as file:
@@ -118,6 +128,7 @@ def read_gita_dhyanam():
     return text
 
 
+@st.cache_data
 def get_chapter_summary_commentry(chapter_number):
     with open('data/gita/chapters_summary2.json', 'r') as file:
         data = json.load(file)
